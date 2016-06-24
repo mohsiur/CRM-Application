@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col s12">
+        <h4>Calls</h4>
+        <!-- used for searching the current list -->
+        <input type="text" ng-model="search" class="form-control" placeholder="Search calls..." />
+        <!-- table that shows product record list -->
+        <table class="responsive-table striped">
+            <thead>
+                <tr>
+                    <th class="text-align-center">ID</th>
+                    <th class="text-align-center">Subject</th>
+                    <th class="text-align-center">Phone Number</th>
+                    <th class="text-align-center">Description</th>
+                    <th class="text-align-center">Created At</th>
+                    <th class="text-align-center">Related To</th>
+                    <th class="text-align-center">Action</th>
+                </tr>
+            </thead>
+            <tbody ng-init="getAll()">
+                <tr ng-repeat="data in items | filter:search">
+                    <td class="text-align-center">{{ data.callsID }}</td>
+                    <td class="text-align-center">{{ data.subject }}</td>
+                    <td class="text-align-center">{{ data.phoneNum }}</td>
+                    <td class="text-align-center">{{ data.description }}</td>
+                    <td class="text-align-center">{{ data.createdAt }}</td>
+                    <td class="text-align-center">{{ data.relatedTo }}</td>
+                    <td class="text-align-center">
+                        <a ng-click="readOne(data.callsID)" class="waves-effect waves-circle waves-light btn-floating"><i class="material-icons">edit</i></a>
+                        <a ng-click="deleteItem(data.callsID)" class="waves-effect waves-circle waves-light btn-floating "><i class="material-icons">delete</i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- modal for for creating new item -->
+        <div id="modal-item-form" class="modal">
+            <div class="modal-content">
+                <h4 id="modal-item-title">Create New Calls</h4>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input ng-model="subject" type="text" class="validate" id="form-subject" placeholder=" " />
+                        <label for="subject">Subject</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input ng-model="phoneNum" type="text" class="validate" id="form-phoneNum" placeholder=" " />
+                        <label for="phoneNum">Phone Number</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea ng-model="description" type="text" class="validate materialize-textarea" placeholder=" "></textarea>
+                        <label for="description">Description</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input ng-model="relatedTo" type="text" class="validate" id="form-relatedTo" placeholder=" " />
+                        <label for="relatedTo">Related To</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <a id="btn-create-item" class="waves-effect waves-light btn margin-bottom-1em" ng-click="createItem()"><i class="material-icons left">add</i>Create</a>
+                        <a id="btn-update-item" class="waves-effect waves-light btn margin-bottom-1em" ng-click="updateItem()"><i class="material-icons left">edit</i>Save Changes</a>
+                        <a class="modal-action modal-close waves-effect waves-light btn margin-bottom-1em"><i class="material-icons left">close</i>Close</a>
+                    </div>
+                </div>
+            </div>s
+        </div>
+        <!-- floating button for creating item -->
+        <div class="fixed-action-btn" style="bottom:45px; right:24px;">
+            <a ng-click="showCreateForm()" class="waves-effect waves-light btn modal-trigger btn-floating btn-large red"><i class="large material-icons">add</i></a>
+        </div>
+    </div>
+</div>

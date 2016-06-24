@@ -1,0 +1,112 @@
+<div class="row">
+    <div class="col s12">
+        <h4>Contacts</h4>
+        <!-- used for searching the current list -->
+        <input type="text" ng-model="search" class="form-control" placeholder="Search Contacts..." />
+        <!-- table that shows product record list -->
+        <table class="responsive-table striped">
+            <thead>
+                <tr>
+                    <th class="text-align-center">ID</th>
+                    <th class="text-align-center">First Name</th>
+                    <th class="text-align-center">Last Name</th>
+                    <th class="text-align-center">Office Number</th>
+                    <th class="text-align-center">Mobile</th>
+                    <th class="text-align-center">Fax</th>
+                    <th class="text-align-center">Email</th>
+                    <th class="text-align-center">Address</th>
+                    <th class="text-align-center">Description</th>
+                    <th class="text-align-center">Source</th>
+                    <th class="text-align-center">Action</th>
+                </tr>
+            </thead>
+            <tbody ng-init="getAll()">
+                <tr ng-repeat="data in items | filter:search">
+                    <td class="text-align-center">{{ data.contactID }}</td>
+                    <td class="text-align-center">{{ data.firstName }}</td>
+                    <td class="text-align-center">{{ data.lastName }}</td>
+                    <td class="text-align-center">{{ data.officeNum }}</td>
+                    <td class="text-align-center">{{ data.mobileNum }}</td>
+                    <td class="text-align-center">{{ data.faxNum }}</td>
+                     <td class="text-align-center">{{ data.email }}</td>
+                    <td class="text-align-center">{{ data.address }}</td>
+                    <td class="text-align-center">{{ data.description }}</td>
+                    <td class="text-align-center">{{ data.contactSource }}</td>
+                    <td class="text-align-center">
+                        <a ng-click="readOne(data.contactID)" class="waves-effect waves-circle waves-light btn-floating"><i class="material-icons">edit</i></a>
+                        <a ng-click="deleteItem(data.contactID)" class="waves-effect waves-circle waves-light btn-floating "><i class="material-icons">delete</i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- modal for for creating new item -->
+        <div id="modal-item-form" class="modal">
+            <div class="modal-content">
+                <h4 id="modal-item-title">Create New Contacts</h4>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input ng-model="firstName" type="text" class="validate" id="form-firstName" placeholder=" " />
+                        <label for="firstName">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input ng-model="lastName" type="text" class="validate" id="form-lastName" placeholder=" " />
+                        <label for="lastName">Last Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input ng-model="officeNum" type="text" class="validate" id="form-officeNum" placeholder=" " />
+                        <label for="officeNum">Office Number</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input ng-model="mobileNum" type="text" class="validate" id="form-mobileNum" placeholder=" " />
+                        <label for="mobileNum">Mobile Number</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input ng-model="faxNum" type="text" class="validate" id="form-faxNum" placeholder=" " />
+                        <label for="faxNum">Fax Number</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input ng-model="email" type="text" class="validate" id="form-email" placeholder=" " />
+                        <label for="email">Email Address</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input ng-model="street" type="text" class="validate" id="form-street" placeholder=" " />
+                        <label for="street">Street Address</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input ng-model="city" type="text" class="validate" id="form-city" placeholder=" " />
+                        <label for="city">City</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input ng-model="state" type="text" class="validate" id="form-state" placeholder=" " />
+                        <label for="state">State</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input ng-model="postalCode" type="text" class="validate" id="form-postalCode" placeholder=" " />
+                        <label for="postalCode">Postal Code</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input ng-model="country" type="text" class="validate" id="form-country" placeholder=" " />
+                        <label for="country">Country</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea ng-model="description" type="text" class="validate materialize-textarea" placeholder=" "></textarea>
+                        <label for="description">Description</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input ng-model="contactSource" type="text" class="validate" id="form-contactSource" placeholder=" " />
+                        <label for="contactSource">Contact Source</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <a id="btn-create-item" class="waves-effect waves-light btn margin-bottom-1em" ng-click="createItem()"><i class="material-icons left">add</i>Create</a>
+                        <a id="btn-update-item" class="waves-effect waves-light btn margin-bottom-1em" ng-click="updateItem()"><i class="material-icons left">edit</i>Save Changes</a>
+                        <a class="modal-action modal-close waves-effect waves-light btn margin-bottom-1em"><i class="material-icons left">close</i>Close</a>
+                    </div>
+                </div>
+            </div>s
+        </div>
+        <!-- floating button for creating item -->
+        <div class="fixed-action-btn" style="bottom:45px; right:24px;">
+            <a ng-click="showCreateForm()" class="waves-effect waves-light btn modal-trigger btn-floating btn-large red"><i class="large material-icons">add</i></a>
+        </div>
+    </div>
+</div>
