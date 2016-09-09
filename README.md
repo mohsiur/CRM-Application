@@ -1,3 +1,5 @@
-## CRM Application
+## CRM Application 
 
-CRM Manager using AngularJS, PHP and MySQL
+A CRM manager using AngularJS, PHP and MySQL
+
+Demo on www.mohsiur.site88.net
